@@ -17,20 +17,20 @@ public class FootballTest extends TestConfig {
 
     @Test
     public void getCompetitionsByMatchesDay() {
-        given().log().all()
+        given()
                 .spec(football_requestSpec)
                 .queryParam("matchday", 1)
                 .when().get(EndPointsFootballAPI.GET_COMPETITION_MATCHES)
-                .then().log().all().spec(football_responseSpec);
+                .then().spec(football_responseSpec);
     }
 
     @Test
     public void getTeamCount() {
-        given().log().all()
+        given()
                 .spec(football_requestSpec)
                 .when().get(EndPointsFootballAPI.GET_COMPETITIONS_2018_TEAMS)
                 .then().body("count", equalTo(20))
-                .log().all().spec(football_responseSpec);
+                .spec(football_responseSpec);
 
     }
 
@@ -40,7 +40,7 @@ public class FootballTest extends TestConfig {
                 .spec(football_requestSpec)
                 .when().get(EndPointsFootballAPI.GET_COMPETITIONS_2018_TEAMS)
                 .then().body("competition.id", equalTo(2018))
-                .log().all().spec(football_responseSpec);
+                .spec(football_responseSpec);
 
     }
 
@@ -55,7 +55,7 @@ public class FootballTest extends TestConfig {
     public void getTeamData2() {
         Response response = given().spec(football_requestSpec)
                 .when().get(EndPointsFootballAPI.GET_COMPETITIONS_2018_TEAMS)
-                .then().log().all().spec(football_responseSpec)
+                .then().spec(football_responseSpec)
                 .extract().response();
 
         String jsonResponsAsString = response.asString();
@@ -66,7 +66,7 @@ public class FootballTest extends TestConfig {
     public void extractHeaders() {
         Response response = given().spec(football_requestSpec)
                 .when().get(EndPointsFootballAPI.GET_COMPETITIONS_2018_TEAMS)
-                .then().log().all().spec(football_responseSpec)
+                .then().spec(football_responseSpec)
                 .extract().response();
 
         Headers headers = response.getHeaders();
@@ -89,7 +89,7 @@ public class FootballTest extends TestConfig {
     public void extractAllData() {
         Response response = given().spec(football_requestSpec)
                 .when().get(EndPointsFootballAPI.GET_COMPETITIONS_2018_TEAMS)
-                .then().log().all().spec(football_responseSpec)
+                .then().spec(football_responseSpec)
                 .extract().response();
 
         List<String> allName = response.path("teams.name");
@@ -97,5 +97,6 @@ public class FootballTest extends TestConfig {
             System.out.println("NAMES IS = " + names);
         }
     }
+
 
 }

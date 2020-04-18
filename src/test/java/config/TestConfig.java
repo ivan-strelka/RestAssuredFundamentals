@@ -3,6 +3,7 @@ package config;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
+import io.restassured.filter.log.LogDetail;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
@@ -20,6 +21,7 @@ public class TestConfig {
     public static void setUp() {
         videoGames_requestSpec = new RequestSpecBuilder()
                 .setBaseUri("http://localhost")
+                .log(LogDetail.ALL)
                 .setPort(8080)
                 .setBasePath("/app/")
                 .setAccept(ContentType.JSON)
@@ -31,6 +33,7 @@ public class TestConfig {
 
         football_requestSpec = new RequestSpecBuilder()
                 .setBaseUri("https://api.football-data.org")
+                .log(LogDetail.ALL)
                 .setBasePath("/v2/")
                 .setAccept(ContentType.JSON)
                 .addHeader("X-Auth-Token","01f36f37f4fd4f82bc93235a954310be")
@@ -40,6 +43,7 @@ public class TestConfig {
 
         videoGames_responseSpec = new ResponseSpecBuilder()
                 .expectStatusCode(200)
+                .log(LogDetail.ALL)
                 .expectContentType(ContentType.JSON)
                 .expectHeader("Content-Type", "application/json")
                 .build();
@@ -47,6 +51,7 @@ public class TestConfig {
         football_responseSpec = new ResponseSpecBuilder()
                 .expectStatusCode(200)
                 .expectContentType(ContentType.JSON)
+                .log(LogDetail.ALL)
                 .expectHeader("Content-Type", "application/json;charset=UTF-8")
                 .expectHeader("X-Application-Context", "application:production")
                 .expectHeader("X-API-Version", "v2")
@@ -61,6 +66,7 @@ public class TestConfig {
 
         responseSpec = new ResponseSpecBuilder()
                 .expectStatusCode(200)
+                .log(LogDetail.ALL)
                 .build();
 
         RestAssured.responseSpecification = responseSpec;

@@ -12,6 +12,7 @@ public class TestConfig {
     public static RequestSpecification videoGames_requestSpec;
     public static RequestSpecification football_requestSpec;
     public static ResponseSpecification videoGames_responseSpec;
+    public static ResponseSpecification football_responseSpec;
     public static ResponseSpecification responseSpec;
 
     @BeforeClass
@@ -38,6 +39,18 @@ public class TestConfig {
                 .expectStatusCode(200)
                 .expectHeader("Content-Type", "application/json")
                 .build();
+
+        football_responseSpec = new ResponseSpecBuilder()
+                .expectStatusCode(200)
+                .expectHeader("Content-Type", "application/json;charset=UTF-8")
+                .expectHeader("X-Application-Context", "application:production")
+                .expectHeader("X-API-Version", "v2")
+                .expectHeader("Access-Control-Allow-Credentials", "true")
+                .expectHeader("X-Authenticated-Client", "John Str")
+                .expectHeader("Content-Language", "en")
+                .expectHeader("Content-Encoding", "gzip")
+                .build();
+
 
         RestAssured.responseSpecification = videoGames_responseSpec;
 

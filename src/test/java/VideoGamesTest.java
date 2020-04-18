@@ -95,6 +95,7 @@ public class VideoGamesTest extends TestConfig {
 
     @Test
     public void getSingleGame() {
+        
         given().spec(videoGames_requestSpec)
                 .pathParam("videoGameId", 5)
                 .when().get(EndPointsVideoGamesAPI.GET_A_SINGLE_VIDEO_GAME_BY_ID)

@@ -7,7 +7,10 @@ import io.restassured.filter.log.LogDetail;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
+import org.hamcrest.Matchers;
 import org.junit.BeforeClass;
+
+import static org.hamcrest.Matchers.*;
 
 public class TestConfig {
 
@@ -46,6 +49,7 @@ public class TestConfig {
                 .log(LogDetail.ALL)
                 .expectContentType(ContentType.JSON)
                 .expectHeader("Content-Type", "application/json")
+                .expectResponseTime(lessThan(2000L))
                 .build();
 
         football_responseSpec = new ResponseSpecBuilder()
@@ -59,6 +63,7 @@ public class TestConfig {
                 .expectHeader("X-Authenticated-Client", "John Str")
                 .expectHeader("Content-Language", "en")
                 .expectHeader("Content-Encoding", "gzip")
+                .expectResponseTime(lessThan(3000L))
                 .build();
 
 

@@ -23,5 +23,6 @@ dependencies {
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.10.3'
     // https://mvnrepository.com/artifact/io.rest-assured/json-schema-validator
     compile group: 'io.rest-assured', name: 'json-schema-validator', version: '4.3.0'
+    testCompile group: 'org.hamcrest', name: 'java-hamcrest', version: '2.0.0.0'
 
 }

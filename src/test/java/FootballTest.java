@@ -7,6 +7,9 @@ import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 import org.junit.Test;
 
+import java.util.List;
+import java.util.Map;
+
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.equalTo;
 
@@ -68,6 +71,31 @@ public class FootballTest extends TestConfig {
 
         Headers headers = response.getHeaders();
         String contentType = response.getHeader("Content-Type");
-        System.out.println(contentType);
+        Map<String, String> cookies = response.getCookies();
+        System.out.println("contentTyp IS = " + contentType);
+        System.out.println("Cookies IS = " + cookies);
     }
+
+    @Test
+    public void extractData() {
+        String someData = given().spec(football_requestSpec)
+                .when().get(EndPointsFootballAPI.GET_COMPETITIONS_2018_TEAMS)
+                .jsonPath().getString("season.id");
+        System.out.println("season.id IS = " + someData);
+
+    }
+
+    @Test
+    public void extractAllData() {
+        Response response = given().spec(football_requestSpec)
+                .when().get(EndPointsFootballAPI.GET_COMPETITIONS_2018_TEAMS)
+                .then().log().all().spec(football_responseSpec)
+                .extract().response();
+
+        List<String> allName = response.path("teams.name");
+        for (String names : allName) {
+            System.out.println("NAMES IS = " + names);
+        }
+    }
+
 }

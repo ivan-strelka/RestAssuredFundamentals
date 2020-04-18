@@ -3,6 +3,7 @@ package config;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
+import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 import org.junit.BeforeClass;
@@ -21,6 +22,7 @@ public class TestConfig {
                 .setBaseUri("http://localhost")
                 .setPort(8080)
                 .setBasePath("/app/")
+                .setAccept(ContentType.JSON)
                 .addHeader("Accept", "application/json")
                 .addHeader("Content-Type", "application/json")
                 .addHeader("Accept-Encoding:", "gzip, deflate, br")
@@ -30,6 +32,7 @@ public class TestConfig {
         football_requestSpec = new RequestSpecBuilder()
                 .setBaseUri("https://api.football-data.org")
                 .setBasePath("/v2/")
+                .setAccept(ContentType.JSON)
                 .addHeader("X-Auth-Token","01f36f37f4fd4f82bc93235a954310be")
                 .build();
 
@@ -37,11 +40,13 @@ public class TestConfig {
 
         videoGames_responseSpec = new ResponseSpecBuilder()
                 .expectStatusCode(200)
+                .expectContentType(ContentType.JSON)
                 .expectHeader("Content-Type", "application/json")
                 .build();
 
         football_responseSpec = new ResponseSpecBuilder()
                 .expectStatusCode(200)
+                .expectContentType(ContentType.JSON)
                 .expectHeader("Content-Type", "application/json;charset=UTF-8")
                 .expectHeader("X-Application-Context", "application:production")
                 .expectHeader("X-API-Version", "v2")

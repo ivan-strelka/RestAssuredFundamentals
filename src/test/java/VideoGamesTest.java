@@ -4,15 +4,14 @@ import org.junit.Test;
 
 import static io.restassured.RestAssured.*;
 
-public class MyFirstTest extends TestConfig {
+public class VideoGamesTest extends TestConfig {
 
     @Test
     public void firstTest() {
         given()
-                .log()
-                .all()
+                .log().all().spec(videoGames_requestSpec)
                 .when().get("videogames/1")
-                .then().log().all();
+                .then().log().all().spec(videoGames_responseSpec);
 
     }
 

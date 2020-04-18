@@ -1,0 +1,941 @@
+{
+	"info": {
+		"_postman_id": "b10990b5-4233-4f7b-b7c8-9445471cc0f7",
+		"name": "api v2 Free Tier",
+		"description": "# Introduction\nThe purpose of the football-data API is to provide football data in a machine readable way.\n\n# Overview\nn/a\n\n# Authentication\nYou have to pass a custom HTTP header\n\n# Error Codes\n403 - You don't have permission to view that resource.\n404 - You called a non-existent endpoint.\n429 - You should lower your results, you got rate limited.\n\n# Rate limit\nSee www.football-data.org/documentation/api#request-throttling for detailed information on rate limits. They depend on your plan.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Area List Resource",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cb5670dc-0c7a-448c-9c6c-6525d547a61a",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+							"tests[\"Client is authenticated\"] = postman.getResponseHeader(\"X-Authenticated-Client\") !== 'anonymous';",
+							"tests[\"API-Version header set\"] = postman.getResponseHeader(\"X-API-Version\") === 'v2';",
+							"tests[\"X-Requests-Available > 0\"] = postman.getResponseHeader(\"X-Requests-Available-Minute\") > 0;",
+							"tests[\"X-RequestCounter-Reset > 0\"] = postman.getResponseHeader(\"X-RequestCounter-Reset\") > 0;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://api.football-data.org/v2/areas",
+					"protocol": "https",
+					"host": [
+						"api",
+						"football-data",
+						"org"
+					],
+					"path": [
+						"v2",
+						"areas"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Area List Resource",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": ""
+							},
+							{
+								"key": "",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://api.football-data.org/v2/areas",
+							"protocol": "http",
+							"host": [
+								"api",
+								"football-data",
+								"org"
+							],
+							"path": [
+								"v2",
+								"areas"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "",
+					"header": [],
+					"cookie": [],
+					"body": "{\n    \"count\": 273,\n    \"filters\": {},\n    \"areas\": [\n        {\n            \"id\": 2000,\n            \"name\": \"Afghanistan\",\n            \"countryCode\": \"AFG\",\n            \"parentAreaId\": 2014,\n            \"parentArea\": \"Asia\"\n        },\n        {\n            \"id\": 2001,\n            \"name\": \"Africa\",\n            \"countryCode\": \"AFR\",\n            \"parentAreaId\": 2267,\n            \"parentArea\": \"World\"\n        },\n        {\n            \"id\": 2002,\n            \"name\": \"Albania\",\n            \"countryCode\": \"ALB\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2003,\n            \"name\": \"Alderney\",\n            \"countryCode\": \"ALD\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2004,\n            \"name\": \"Algeria\",\n            \"countryCode\": \"ALG\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2005,\n            \"name\": \"American Samoa\",\n            \"countryCode\": \"ASM\",\n            \"parentAreaId\": 2175,\n            \"parentArea\": \"Oceania\"\n        },\n        {\n            \"id\": 2006,\n            \"name\": \"Andorra\",\n            \"countryCode\": \"AND\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2007,\n            \"name\": \"Angola\",\n            \"countryCode\": \"ANG\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2008,\n            \"name\": \"Anguilla\",\n            \"countryCode\": \"AIA\",\n            \"parentAreaId\": 2159,\n            \"parentArea\": \"N/C America\"\n        },\n        {\n            \"id\": 2009,\n            \"name\": \"Antigua and Barbuda\",\n            \"countryCode\": \"ATG\",\n            \"parentAreaId\": 2159,\n            \"parentArea\": \"N/C America\"\n        },\n        {\n            \"id\": 2010,\n            \"name\": \"Arameans Suryoye\",\n            \"countryCode\": \"ARS\",\n            \"parentAreaId\": 2267,\n            \"parentArea\": \"World\"\n        },\n        {\n            \"id\": 2011,\n            \"name\": \"Argentina\",\n            \"countryCode\": \"ARG\",\n            \"parentAreaId\": 2220,\n            \"parentArea\": \"South America\"\n        },\n        {\n            \"id\": 2012,\n            \"name\": \"Armenia\",\n            \"countryCode\": \"ARM\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2013,\n            \"name\": \"Aruba\",\n            \"countryCode\": \"ABW\",\n            \"parentAreaId\": 2159,\n            \"parentArea\": \"N/C America\"\n        },\n        {\n            \"id\": 2014,\n            \"name\": \"Asia\",\n            \"countryCode\": \"ASI\",\n            \"parentAreaId\": 2267,\n            \"parentArea\": \"World\"\n        },\n        {\n            \"id\": 2015,\n            \"name\": \"Australia\",\n            \"countryCode\": \"AUS\",\n            \"parentAreaId\": 2014,\n            \"parentArea\": \"Asia\"\n        },\n        {\n            \"id\": 2016,\n            \"name\": \"Austria\",\n            \"countryCode\": \"AUT\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2017,\n            \"name\": \"Azerbaijan\",\n            \"countryCode\": \"AZE\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2018,\n            \"name\": \"Bahamas\",\n            \"countryCode\": \"BHS\",\n            \"parentAreaId\": 2159,\n            \"parentArea\": \"N/C America\"\n        },\n        {\n            \"id\": 2019,\n            \"name\": \"Bahrain\",\n            \"countryCode\": \"BHR\",\n            \"parentAreaId\": 2014,\n            \"parentArea\": \"Asia\"\n        },\n        {\n            \"id\": 2020,\n            \"name\": \"Bangladesh\",\n            \"countryCode\": \"BAN\",\n            \"parentAreaId\": 2014,\n            \"parentArea\": \"Asia\"\n        },\n        {\n            \"id\": 2021,\n            \"name\": \"Barbados\",\n            \"countryCode\": \"BRB\",\n            \"parentAreaId\": 2159,\n            \"parentArea\": \"N/C America\"\n        },\n        {\n            \"id\": 2022,\n            \"name\": \"Belarus\",\n            \"countryCode\": \"BLR\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2023,\n            \"name\": \"Belgium\",\n            \"countryCode\": \"BEL\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2024,\n            \"name\": \"Belize\",\n            \"countryCode\": \"BLZ\",\n            \"parentAreaId\": 2159,\n            \"parentArea\": \"N/C America\"\n        },\n        {\n            \"id\": 2025,\n            \"name\": \"Benin\",\n            \"countryCode\": \"BEN\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2026,\n            \"name\": \"Bermuda\",\n            \"countryCode\": \"BMU\",\n            \"parentAreaId\": 2159,\n            \"parentArea\": \"N/C America\"\n        },\n        {\n            \"id\": 2027,\n            \"name\": \"Bhutan\",\n            \"countryCode\": \"BHU\",\n            \"parentAreaId\": 2014,\n            \"parentArea\": \"Asia\"\n        },\n        {\n            \"id\": 2028,\n            \"name\": \"Bolivia\",\n            \"countryCode\": \"BOL\",\n            \"parentAreaId\": 2220,\n            \"parentArea\": \"South America\"\n        },\n        {\n            \"id\": 2029,\n            \"name\": \"Bonaire\",\n            \"countryCode\": \"BON\",\n            \"parentAreaId\": 2159,\n            \"parentArea\": \"N/C America\"\n        },\n        {\n            \"id\": 2030,\n            \"name\": \"Bosnia and Herzegovina\",\n            \"countryCode\": \"BIH\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2031,\n            \"name\": \"Botswana\",\n            \"countryCode\": \"BOT\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2032,\n            \"name\": \"Brazil\",\n            \"countryCode\": \"BRA\",\n            \"parentAreaId\": 2220,\n            \"parentArea\": \"South America\"\n        },\n        {\n            \"id\": 2033,\n            \"name\": \"British Virgin Islands\",\n            \"countryCode\": \"BVI\",\n            \"parentAreaId\": 2159,\n            \"parentArea\": \"N/C America\"\n        },\n        {\n            \"id\": 2034,\n            \"name\": \"Brunei Darussalam\",\n            \"countryCode\": \"BRU\",\n            \"parentAreaId\": 2014,\n            \"parentArea\": \"Asia\"\n        },\n        {\n            \"id\": 2035,\n            \"name\": \"Bulgaria\",\n            \"countryCode\": \"BGR\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2036,\n            \"name\": \"Burkina Faso\",\n            \"countryCode\": \"BFA\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2037,\n            \"name\": \"Burundi\",\n            \"countryCode\": \"BDI\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2038,\n            \"name\": \"Cambodia\",\n            \"countryCode\": \"CAM\",\n            \"parentAreaId\": 2014,\n            \"parentArea\": \"Asia\"\n        },\n        {\n            \"id\": 2039,\n            \"name\": \"Cameroon\",\n            \"countryCode\": \"CMR\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2040,\n            \"name\": \"Canada\",\n            \"countryCode\": \"CAN\",\n            \"parentAreaId\": 2159,\n            \"parentArea\": \"N/C America\"\n        },\n        {\n            \"id\": 2041,\n            \"name\": \"Cape Verde Islands\",\n            \"countryCode\": \"CPV\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2042,\n            \"name\": \"Cayman Islands\",\n            \"countryCode\": \"CYM\",\n            \"parentAreaId\": 2159,\n            \"parentArea\": \"N/C America\"\n        },\n        {\n            \"id\": 2043,\n            \"name\": \"Central African Republic\",\n            \"countryCode\": \"CTA\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2044,\n            \"name\": \"Chad\",\n            \"countryCode\": \"CHA\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2045,\n            \"name\": \"Chile\",\n            \"countryCode\": \"CHL\",\n            \"parentAreaId\": 2220,\n            \"parentArea\": \"South America\"\n        },\n        {\n            \"id\": 2046,\n            \"name\": \"China PR\",\n            \"countryCode\": \"CHN\",\n            \"parentAreaId\": 2014,\n            \"parentArea\": \"Asia\"\n        },\n        {\n            \"id\": 2047,\n            \"name\": \"Chinese Taipei\",\n            \"countryCode\": \"TPE\",\n            \"parentAreaId\": 2014,\n            \"parentArea\": \"Asia\"\n        },\n        {\n            \"id\": 2048,\n            \"name\": \"CIS\",\n            \"countryCode\": \"CIS\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2049,\n            \"name\": \"Colombia\",\n            \"countryCode\": \"COL\",\n            \"parentAreaId\": 2220,\n            \"parentArea\": \"South America\"\n        },\n        {\n            \"id\": 2050,\n            \"name\": \"Comoros\",\n            \"countryCode\": \"CMO\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2051,\n            \"name\": \"Congo\",\n            \"countryCode\": \"CGO\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2052,\n            \"name\": \"Congo DR\",\n            \"countryCode\": \"COD\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2053,\n            \"name\": \"Cook Islands\",\n            \"countryCode\": \"COK\",\n            \"parentAreaId\": 2175,\n            \"parentArea\": \"Oceania\"\n        },\n        {\n            \"id\": 2054,\n            \"name\": \"Corsica\",\n            \"countryCode\": \"COR\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2055,\n            \"name\": \"Costa Rica\",\n            \"countryCode\": \"CRI\",\n            \"parentAreaId\": 2159,\n            \"parentArea\": \"N/C America\"\n        },\n        {\n            \"id\": 2056,\n            \"name\": \"Côte d’Ivoire\",\n            \"countryCode\": \"CIV\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2057,\n            \"name\": \"Crimea\",\n            \"countryCode\": \"ARC\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2058,\n            \"name\": \"Croatia\",\n            \"countryCode\": \"HRV\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2059,\n            \"name\": \"Cuba\",\n            \"countryCode\": \"CUB\",\n            \"parentAreaId\": 2159,\n            \"parentArea\": \"N/C America\"\n        },\n        {\n            \"id\": 2060,\n            \"name\": \"Curaçao\",\n            \"countryCode\": \"ANT\",\n            \"parentAreaId\": 2159,\n            \"parentArea\": \"N/C America\"\n        },\n        {\n            \"id\": 2061,\n            \"name\": \"Cyprus\",\n            \"countryCode\": \"CYP\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2062,\n            \"name\": \"Czech Republic\",\n            \"countryCode\": \"CZE\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2063,\n            \"name\": \"Czechoslovakia\",\n            \"countryCode\": \"CZS\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2064,\n            \"name\": \"Darfur\",\n            \"countryCode\": \"DAR\",\n            \"parentAreaId\": 2267,\n            \"parentArea\": \"World\"\n        },\n        {\n            \"id\": 2065,\n            \"name\": \"Denmark\",\n            \"countryCode\": \"DNK\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2066,\n            \"name\": \"Djibouti\",\n            \"countryCode\": \"DJI\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2067,\n            \"name\": \"Dominica\",\n            \"countryCode\": \"DMA\",\n            \"parentAreaId\": 2159,\n            \"parentArea\": \"N/C America\"\n        },\n        {\n            \"id\": 2068,\n            \"name\": \"Dominican Republic\",\n            \"countryCode\": \"DOM\",\n            \"parentAreaId\": 2159,\n            \"parentArea\": \"N/C America\"\n        },\n        {\n            \"id\": 2069,\n            \"name\": \"Ecuador\",\n            \"countryCode\": \"ECU\",\n            \"parentAreaId\": 2220,\n            \"parentArea\": \"South America\"\n        },\n        {\n            \"id\": 2070,\n            \"name\": \"Egypt\",\n            \"countryCode\": \"EGY\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2071,\n            \"name\": \"El Salvador\",\n            \"countryCode\": \"SLV\",\n            \"parentAreaId\": 2159,\n            \"parentArea\": \"N/C America\"\n        },\n        {\n            \"id\": 2072,\n            \"name\": \"England\",\n            \"countryCode\": \"ENG\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2073,\n            \"name\": \"Equatorial Guinea\",\n            \"countryCode\": \"EQG\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2074,\n            \"name\": \"Eritrea\",\n            \"countryCode\": \"ERI\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2075,\n            \"name\": \"Estonia\",\n            \"countryCode\": \"EST\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2076,\n            \"name\": \"Ethiopia\",\n            \"countryCode\": \"ETH\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2077,\n            \"name\": \"Europe\",\n            \"countryCode\": \"EUR\",\n            \"parentAreaId\": 2267,\n            \"parentArea\": \"World\"\n        },\n        {\n            \"id\": 2078,\n            \"name\": \"Faroe Islands\",\n            \"countryCode\": \"FRO\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2079,\n            \"name\": \"Fiji\",\n            \"countryCode\": \"FJI\",\n            \"parentAreaId\": 2175,\n            \"parentArea\": \"Oceania\"\n        },\n        {\n            \"id\": 2080,\n            \"name\": \"Finland\",\n            \"countryCode\": \"FIN\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2081,\n            \"name\": \"France\",\n            \"countryCode\": \"FRA\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2082,\n            \"name\": \"French Guiana\",\n            \"countryCode\": \"FGU\",\n            \"parentAreaId\": 2159,\n            \"parentArea\": \"N/C America\"\n        },\n        {\n            \"id\": 2083,\n            \"name\": \"FYR Macedonia\",\n            \"countryCode\": \"MKD\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2084,\n            \"name\": \"Gabon\",\n            \"countryCode\": \"GAB\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2085,\n            \"name\": \"Gambia\",\n            \"countryCode\": \"GAM\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2086,\n            \"name\": \"GDR\",\n            \"countryCode\": \"GDR\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2087,\n            \"name\": \"Georgia\",\n            \"countryCode\": \"GEO\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2088,\n            \"name\": \"Germany\",\n            \"countryCode\": \"DEU\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2089,\n            \"name\": \"Ghana\",\n            \"countryCode\": \"GHA\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2090,\n            \"name\": \"Gibraltar\",\n            \"countryCode\": \"GIB\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2091,\n            \"name\": \"Gozo\",\n            \"countryCode\": \"GOZ\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2092,\n            \"name\": \"Great Britain\",\n            \"countryCode\": \"GBR\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2093,\n            \"name\": \"Greece\",\n            \"countryCode\": \"GRC\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2094,\n            \"name\": \"Greenland\",\n            \"countryCode\": \"GEE\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2095,\n            \"name\": \"Grenada\",\n            \"countryCode\": \"GRD\",\n            \"parentAreaId\": 2159,\n            \"parentArea\": \"N/C America\"\n        },\n        {\n            \"id\": 2096,\n            \"name\": \"Guadeloupe\",\n            \"countryCode\": \"GDL\",\n            \"parentAreaId\": 2159,\n            \"parentArea\": \"N/C America\"\n        },\n        {\n            \"id\": 2097,\n            \"name\": \"Guam\",\n            \"countryCode\": \"GUM\",\n            \"parentAreaId\": 2014,\n            \"parentArea\": \"Asia\"\n        },\n        {\n            \"id\": 2098,\n            \"name\": \"Guatemala\",\n            \"countryCode\": \"GTM\",\n            \"parentAreaId\": 2159,\n            \"parentArea\": \"N/C America\"\n        },\n        {\n            \"id\": 2099,\n            \"name\": \"Guernsey\",\n            \"countryCode\": \"GGY\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2100,\n            \"name\": \"Guinea\",\n            \"countryCode\": \"GUI\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2101,\n            \"name\": \"Guinea-Bissau\",\n            \"countryCode\": \"GNB\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2102,\n            \"name\": \"Guyana\",\n            \"countryCode\": \"GUY\",\n            \"parentAreaId\": 2159,\n            \"parentArea\": \"N/C America\"\n        },\n        {\n            \"id\": 2103,\n            \"name\": \"Haiti\",\n            \"countryCode\": \"HTI\",\n            \"parentAreaId\": 2159,\n            \"parentArea\": \"N/C America\"\n        },\n        {\n            \"id\": 2104,\n            \"name\": \"Honduras\",\n            \"countryCode\": \"HND\",\n            \"parentAreaId\": 2159,\n            \"parentArea\": \"N/C America\"\n        },\n        {\n            \"id\": 2105,\n            \"name\": \"Hong Kong\",\n            \"countryCode\": \"HKG\",\n            \"parentAreaId\": 2014,\n            \"parentArea\": \"Asia\"\n        },\n        {\n            \"id\": 2106,\n            \"name\": \"Hungary\",\n            \"countryCode\": \"HUN\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2107,\n            \"name\": \"Iceland\",\n            \"countryCode\": \"ISL\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2108,\n            \"name\": \"India\",\n            \"countryCode\": \"IND\",\n            \"parentAreaId\": 2014,\n            \"parentArea\": \"Asia\"\n        },\n        {\n            \"id\": 2109,\n            \"name\": \"Indonesia\",\n            \"countryCode\": \"IDN\",\n            \"parentAreaId\": 2014,\n            \"parentArea\": \"Asia\"\n        },\n        {\n            \"id\": 2110,\n            \"name\": \"Iran\",\n            \"countryCode\": \"IRN\",\n            \"parentAreaId\": 2014,\n            \"parentArea\": \"Asia\"\n        },\n        {\n            \"id\": 2111,\n            \"name\": \"Iraq\",\n            \"countryCode\": \"IRQ\",\n            \"parentAreaId\": 2014,\n            \"parentArea\": \"Asia\"\n        },\n        {\n            \"id\": 2112,\n            \"name\": \"Isle of Man\",\n            \"countryCode\": \"IOM\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2113,\n            \"name\": \"Israel\",\n            \"countryCode\": \"ISR\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2114,\n            \"name\": \"Italy\",\n            \"countryCode\": \"ITA\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2115,\n            \"name\": \"Jamaica\",\n            \"countryCode\": \"JAM\",\n            \"parentAreaId\": 2159,\n            \"parentArea\": \"N/C America\"\n        },\n        {\n            \"id\": 2116,\n            \"name\": \"Japan\",\n            \"countryCode\": \"JPN\",\n            \"parentAreaId\": 2014,\n            \"parentArea\": \"Asia\"\n        },\n        {\n            \"id\": 2117,\n            \"name\": \"Jersey\",\n            \"countryCode\": \"JER\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2118,\n            \"name\": \"Jordan\",\n            \"countryCode\": \"JOR\",\n            \"parentAreaId\": 2014,\n            \"parentArea\": \"Asia\"\n        },\n        {\n            \"id\": 2119,\n            \"name\": \"Kazakhstan\",\n            \"countryCode\": \"KAZ\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2120,\n            \"name\": \"Kenya\",\n            \"countryCode\": \"KEN\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2121,\n            \"name\": \"Kiribati\",\n            \"countryCode\": \"KIR\",\n            \"parentAreaId\": 2175,\n            \"parentArea\": \"Oceania\"\n        },\n        {\n            \"id\": 2122,\n            \"name\": \"Korea DPR\",\n            \"countryCode\": \"PRK\",\n            \"parentAreaId\": 2014,\n            \"parentArea\": \"Asia\"\n        },\n        {\n            \"id\": 2123,\n            \"name\": \"Korea Republic\",\n            \"countryCode\": \"KOR\",\n            \"parentAreaId\": 2014,\n            \"parentArea\": \"Asia\"\n        },\n        {\n            \"id\": 2124,\n            \"name\": \"Kosovo\",\n            \"countryCode\": \"KSV\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2125,\n            \"name\": \"Kurdistan\",\n            \"countryCode\": \"KUR\",\n            \"parentAreaId\": 2014,\n            \"parentArea\": \"Asia\"\n        },\n        {\n            \"id\": 2126,\n            \"name\": \"Kuwait\",\n            \"countryCode\": \"KUW\",\n            \"parentAreaId\": 2014,\n            \"parentArea\": \"Asia\"\n        },\n        {\n            \"id\": 2127,\n            \"name\": \"Kyrgyzstan\",\n            \"countryCode\": \"KGZ\",\n            \"parentAreaId\": 2014,\n            \"parentArea\": \"Asia\"\n        },\n        {\n            \"id\": 2128,\n            \"name\": \"Laos\",\n            \"countryCode\": \"LAO\",\n            \"parentAreaId\": 2014,\n            \"parentArea\": \"Asia\"\n        },\n        {\n            \"id\": 2129,\n            \"name\": \"Latvia\",\n            \"countryCode\": \"LVA\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2130,\n            \"name\": \"Lebanon\",\n            \"countryCode\": \"LIB\",\n            \"parentAreaId\": 2014,\n            \"parentArea\": \"Asia\"\n        },\n        {\n            \"id\": 2131,\n            \"name\": \"Lesotho\",\n            \"countryCode\": \"LES\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2132,\n            \"name\": \"Liberia\",\n            \"countryCode\": \"LBR\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2133,\n            \"name\": \"Libya\",\n            \"countryCode\": \"LBY\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2134,\n            \"name\": \"Liechtenstein\",\n            \"countryCode\": \"LIE\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2135,\n            \"name\": \"Lithuania\",\n            \"countryCode\": \"LTU\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2136,\n            \"name\": \"Luxembourg\",\n            \"countryCode\": \"LUX\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2137,\n            \"name\": \"Macao\",\n            \"countryCode\": \"MAC\",\n            \"parentAreaId\": 2014,\n            \"parentArea\": \"Asia\"\n        },\n        {\n            \"id\": 2138,\n            \"name\": \"Madagascar\",\n            \"countryCode\": \"MAD\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2139,\n            \"name\": \"Malawi\",\n            \"countryCode\": \"MWI\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2140,\n            \"name\": \"Malaysia\",\n            \"countryCode\": \"MAS\",\n            \"parentAreaId\": 2014,\n            \"parentArea\": \"Asia\"\n        },\n        {\n            \"id\": 2141,\n            \"name\": \"Maldives\",\n            \"countryCode\": \"MDV\",\n            \"parentAreaId\": 2014,\n            \"parentArea\": \"Asia\"\n        },\n        {\n            \"id\": 2142,\n            \"name\": \"Mali\",\n            \"countryCode\": \"MLI\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2143,\n            \"name\": \"Malta\",\n            \"countryCode\": \"MLT\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2144,\n            \"name\": \"Marshall Islands\",\n            \"countryCode\": \"MSI\",\n            \"parentAreaId\": 2175,\n            \"parentArea\": \"Oceania\"\n        },\n        {\n            \"id\": 2145,\n            \"name\": \"Martinique\",\n            \"countryCode\": \"MTQ\",\n            \"parentAreaId\": 2159,\n            \"parentArea\": \"N/C America\"\n        },\n        {\n            \"id\": 2146,\n            \"name\": \"Mauritania\",\n            \"countryCode\": \"MTN\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2147,\n            \"name\": \"Mauritius\",\n            \"countryCode\": \"MRI\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2148,\n            \"name\": \"Mayotte\",\n            \"countryCode\": \"MYT\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2149,\n            \"name\": \"Mexico\",\n            \"countryCode\": \"MEX\",\n            \"parentAreaId\": 2159,\n            \"parentArea\": \"N/C America\"\n        },\n        {\n            \"id\": 2150,\n            \"name\": \"Micronesia\",\n            \"countryCode\": \"MIC\",\n            \"parentAreaId\": 2175,\n            \"parentArea\": \"Oceania\"\n        },\n        {\n            \"id\": 2151,\n            \"name\": \"Moldova\",\n            \"countryCode\": \"MHL\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2152,\n            \"name\": \"Monaco\",\n            \"countryCode\": \"MCO\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2153,\n            \"name\": \"Mongolia\",\n            \"countryCode\": \"MGL\",\n            \"parentAreaId\": 2014,\n            \"parentArea\": \"Asia\"\n        },\n        {\n            \"id\": 2154,\n            \"name\": \"Montenegro\",\n            \"countryCode\": \"MNE\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2155,\n            \"name\": \"Montserrat\",\n            \"countryCode\": \"MSR\",\n            \"parentAreaId\": 2159,\n            \"parentArea\": \"N/C America\"\n        },\n        {\n            \"id\": 2156,\n            \"name\": \"Morocco\",\n            \"countryCode\": \"MAR\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2157,\n            \"name\": \"Mozambique\",\n            \"countryCode\": \"MOZ\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2158,\n            \"name\": \"Myanmar\",\n            \"countryCode\": \"MYA\",\n            \"parentAreaId\": 2014,\n            \"parentArea\": \"Asia\"\n        },\n        {\n            \"id\": 2159,\n            \"name\": \"N/C America\",\n            \"countryCode\": \"NCA\",\n            \"parentAreaId\": 2267,\n            \"parentArea\": \"World\"\n        },\n        {\n            \"id\": 2160,\n            \"name\": \"Namibia\",\n            \"countryCode\": \"NAM\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2161,\n            \"name\": \"Nauru\",\n            \"countryCode\": \"NAU\",\n            \"parentAreaId\": 2175,\n            \"parentArea\": \"Oceania\"\n        },\n        {\n            \"id\": 2162,\n            \"name\": \"Nepal\",\n            \"countryCode\": \"NEP\",\n            \"parentAreaId\": 2014,\n            \"parentArea\": \"Asia\"\n        },\n        {\n            \"id\": 2163,\n            \"name\": \"Netherlands\",\n            \"countryCode\": \"NLD\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2164,\n            \"name\": \"New Caledonia\",\n            \"countryCode\": \"NCL\",\n            \"parentAreaId\": 2175,\n            \"parentArea\": \"Oceania\"\n        },\n        {\n            \"id\": 2165,\n            \"name\": \"New Zealand\",\n            \"countryCode\": \"NZL\",\n            \"parentAreaId\": 2175,\n            \"parentArea\": \"Oceania\"\n        },\n        {\n            \"id\": 2166,\n            \"name\": \"NF-Board\",\n            \"countryCode\": \"NFB\",\n            \"parentAreaId\": 2267,\n            \"parentArea\": \"World\"\n        },\n        {\n            \"id\": 2167,\n            \"name\": \"Nicaragua\",\n            \"countryCode\": \"NIC\",\n            \"parentAreaId\": 2159,\n            \"parentArea\": \"N/C America\"\n        },\n        {\n            \"id\": 2168,\n            \"name\": \"Niger\",\n            \"countryCode\": \"NIG\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2169,\n            \"name\": \"Nigeria\",\n            \"countryCode\": \"NGA\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2170,\n            \"name\": \"Niue\",\n            \"countryCode\": \"NIU\",\n            \"parentAreaId\": 2175,\n            \"parentArea\": \"Oceania\"\n        },\n        {\n            \"id\": 2171,\n            \"name\": \"Northern Ireland\",\n            \"countryCode\": \"NIR\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2172,\n            \"name\": \"Northern Mariana Islands\",\n            \"countryCode\": \"NMI\",\n            \"parentAreaId\": 2014,\n            \"parentArea\": \"Asia\"\n        },\n        {\n            \"id\": 2173,\n            \"name\": \"Norway\",\n            \"countryCode\": \"NOR\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2174,\n            \"name\": \"Occitania\",\n            \"countryCode\": \"OCC\",\n            \"parentAreaId\": 2267,\n            \"parentArea\": \"World\"\n        },\n        {\n            \"id\": 2175,\n            \"name\": \"Oceania\",\n            \"countryCode\": \"OCE\",\n            \"parentAreaId\": 2267,\n            \"parentArea\": \"World\"\n        },\n        {\n            \"id\": 2176,\n            \"name\": \"Oman\",\n            \"countryCode\": \"OMA\",\n            \"parentAreaId\": 2014,\n            \"parentArea\": \"Asia\"\n        },\n        {\n            \"id\": 2177,\n            \"name\": \"Padania\",\n            \"countryCode\": \"PAD\",\n            \"parentAreaId\": 2267,\n            \"parentArea\": \"World\"\n        },\n        {\n            \"id\": 2178,\n            \"name\": \"Pakistan\",\n            \"countryCode\": \"PAK\",\n            \"parentAreaId\": 2014,\n            \"parentArea\": \"Asia\"\n        },\n        {\n            \"id\": 2179,\n            \"name\": \"Palau\",\n            \"countryCode\": \"PLA\",\n            \"parentAreaId\": 2175,\n            \"parentArea\": \"Oceania\"\n        },\n        {\n            \"id\": 2180,\n            \"name\": \"Palestine\",\n            \"countryCode\": \"PAL\",\n            \"parentAreaId\": 2014,\n            \"parentArea\": \"Asia\"\n        },\n        {\n            \"id\": 2181,\n            \"name\": \"Panama\",\n            \"countryCode\": \"PAN\",\n            \"parentAreaId\": 2159,\n            \"parentArea\": \"N/C America\"\n        },\n        {\n            \"id\": 2182,\n            \"name\": \"Papua New Guinea\",\n            \"countryCode\": \"PNG\",\n            \"parentAreaId\": 2175,\n            \"parentArea\": \"Oceania\"\n        },\n        {\n            \"id\": 2183,\n            \"name\": \"Paraguay\",\n            \"countryCode\": \"PRY\",\n            \"parentAreaId\": 2220,\n            \"parentArea\": \"South America\"\n        },\n        {\n            \"id\": 2184,\n            \"name\": \"Peru\",\n            \"countryCode\": \"PER\",\n            \"parentAreaId\": 2220,\n            \"parentArea\": \"South America\"\n        },\n        {\n            \"id\": 2185,\n            \"name\": \"Philippines\",\n            \"countryCode\": \"PHI\",\n            \"parentAreaId\": 2014,\n            \"parentArea\": \"Asia\"\n        },\n        {\n            \"id\": 2186,\n            \"name\": \"Poland\",\n            \"countryCode\": \"POL\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2187,\n            \"name\": \"Portugal\",\n            \"countryCode\": \"PRT\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2188,\n            \"name\": \"Provence\",\n            \"countryCode\": \"PRO\",\n            \"parentAreaId\": 2267,\n            \"parentArea\": \"World\"\n        },\n        {\n            \"id\": 2189,\n            \"name\": \"Puerto Rico\",\n            \"countryCode\": \"PRI\",\n            \"parentAreaId\": 2159,\n            \"parentArea\": \"N/C America\"\n        },\n        {\n            \"id\": 2190,\n            \"name\": \"Qatar\",\n            \"countryCode\": \"QAT\",\n            \"parentAreaId\": 2014,\n            \"parentArea\": \"Asia\"\n        },\n        {\n            \"id\": 2191,\n            \"name\": \"Raetia\",\n            \"countryCode\": \"RAE\",\n            \"parentAreaId\": 2267,\n            \"parentArea\": \"World\"\n        },\n        {\n            \"id\": 2192,\n            \"name\": \"Republic of Ireland\",\n            \"countryCode\": \"IRL\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2193,\n            \"name\": \"Reunion\",\n            \"countryCode\": \"REU\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2194,\n            \"name\": \"Romania\",\n            \"countryCode\": \"ROU\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2195,\n            \"name\": \"Russia\",\n            \"countryCode\": \"RUS\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2196,\n            \"name\": \"Rwanda\",\n            \"countryCode\": \"RWA\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2197,\n            \"name\": \"Saint Martin\",\n            \"countryCode\": \"SMT\",\n            \"parentAreaId\": 2159,\n            \"parentArea\": \"N/C America\"\n        },\n        {\n            \"id\": 2198,\n            \"name\": \"Saint Pierre and Miquelon\",\n            \"countryCode\": \"SPM\",\n            \"parentAreaId\": 2159,\n            \"parentArea\": \"N/C America\"\n        },\n        {\n            \"id\": 2199,\n            \"name\": \"Samoa\",\n            \"countryCode\": \"WSM\",\n            \"parentAreaId\": 2175,\n            \"parentArea\": \"Oceania\"\n        },\n        {\n            \"id\": 2200,\n            \"name\": \"San Marino\",\n            \"countryCode\": \"SMR\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2201,\n            \"name\": \"São Tomé e Príncipe\",\n            \"countryCode\": \"STP\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2202,\n            \"name\": \"Sápmi\",\n            \"countryCode\": \"SAP\",\n            \"parentAreaId\": 2267,\n            \"parentArea\": \"World\"\n        },\n        {\n            \"id\": 2203,\n            \"name\": \"Saudi Arabia\",\n            \"countryCode\": \"KSA\",\n            \"parentAreaId\": 2014,\n            \"parentArea\": \"Asia\"\n        },\n        {\n            \"id\": 2204,\n            \"name\": \"Scotland\",\n            \"countryCode\": \"SCO\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2205,\n            \"name\": \"Senegal\",\n            \"countryCode\": \"SEN\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2206,\n            \"name\": \"Serbia\",\n            \"countryCode\": \"SER\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2207,\n            \"name\": \"Serbia and Montenegro\",\n            \"countryCode\": \"SCG\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2208,\n            \"name\": \"Seychelles\",\n            \"countryCode\": \"SEY\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2209,\n            \"name\": \"Shetland\",\n            \"countryCode\": \"SHE\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2210,\n            \"name\": \"Sierra Leone\",\n            \"countryCode\": \"SLE\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2211,\n            \"name\": \"Singapore\",\n            \"countryCode\": \"SIN\",\n            \"parentAreaId\": 2014,\n            \"parentArea\": \"Asia\"\n        },\n        {\n            \"id\": 2212,\n            \"name\": \"Sint Eustatius\",\n            \"countryCode\": \"SEU\",\n            \"parentAreaId\": 2159,\n            \"parentArea\": \"N/C America\"\n        },\n        {\n            \"id\": 2213,\n            \"name\": \"Sint Maarten\",\n            \"countryCode\": \"SMA\",\n            \"parentAreaId\": 2159,\n            \"parentArea\": \"N/C America\"\n        },\n        {\n            \"id\": 2214,\n            \"name\": \"Slovakia\",\n            \"countryCode\": \"SVK\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2215,\n            \"name\": \"Slovenia\",\n            \"countryCode\": \"SVN\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2216,\n            \"name\": \"Solomon Islands\",\n            \"countryCode\": \"SLB\",\n            \"parentAreaId\": 2175,\n            \"parentArea\": \"Oceania\"\n        },\n        {\n            \"id\": 2217,\n            \"name\": \"Somalia\",\n            \"countryCode\": \"SOM\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2218,\n            \"name\": \"Somaliland\",\n            \"countryCode\": \"SOL\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2219,\n            \"name\": \"South Africa\",\n            \"countryCode\": \"RSA\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2220,\n            \"name\": \"South America\",\n            \"countryCode\": \"SAM\",\n            \"parentAreaId\": 2267,\n            \"parentArea\": \"World\"\n        },\n        {\n            \"id\": 2221,\n            \"name\": \"South Sudan\",\n            \"countryCode\": \"SSD\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2222,\n            \"name\": \"Southern Cameroon\",\n            \"countryCode\": \"SCM\",\n            \"parentAreaId\": 2267,\n            \"parentArea\": \"World\"\n        },\n        {\n            \"id\": 2223,\n            \"name\": \"Soviet Union\",\n            \"countryCode\": \"SOV\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2224,\n            \"name\": \"Spain\",\n            \"countryCode\": \"ESP\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2225,\n            \"name\": \"Sri Lanka\",\n            \"countryCode\": \"SRI\",\n            \"parentAreaId\": 2014,\n            \"parentArea\": \"Asia\"\n        },\n        {\n            \"id\": 2226,\n            \"name\": \"St. Helena\",\n            \"countryCode\": \"STH\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2227,\n            \"name\": \"St. Kitts and Nevis\",\n            \"countryCode\": \"SKN\",\n            \"parentAreaId\": 2159,\n            \"parentArea\": \"N/C America\"\n        },\n        {\n            \"id\": 2228,\n            \"name\": \"St. Lucia\",\n            \"countryCode\": \"STL\",\n            \"parentAreaId\": 2159,\n            \"parentArea\": \"N/C America\"\n        },\n        {\n            \"id\": 2229,\n            \"name\": \"St. Vincent and the Grenadines\",\n            \"countryCode\": \"SVG\",\n            \"parentAreaId\": 2159,\n            \"parentArea\": \"N/C America\"\n        },\n        {\n            \"id\": 2230,\n            \"name\": \"Sudan\",\n            \"countryCode\": \"SUD\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2231,\n            \"name\": \"Suriname\",\n            \"countryCode\": \"SUR\",\n            \"parentAreaId\": 2159,\n            \"parentArea\": \"N/C America\"\n        },\n        {\n            \"id\": 2232,\n            \"name\": \"Swaziland\",\n            \"countryCode\": \"SWZ\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2233,\n            \"name\": \"Sweden\",\n            \"countryCode\": \"SWE\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2234,\n            \"name\": \"Switzerland\",\n            \"countryCode\": \"CHE\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2235,\n            \"name\": \"Syria\",\n            \"countryCode\": \"SYR\",\n            \"parentAreaId\": 2014,\n            \"parentArea\": \"Asia\"\n        },\n        {\n            \"id\": 2236,\n            \"name\": \"Tahiti\",\n            \"countryCode\": \"TAH\",\n            \"parentAreaId\": 2175,\n            \"parentArea\": \"Oceania\"\n        },\n        {\n            \"id\": 2237,\n            \"name\": \"Tajikistan\",\n            \"countryCode\": \"TJK\",\n            \"parentAreaId\": 2014,\n            \"parentArea\": \"Asia\"\n        },\n        {\n            \"id\": 2238,\n            \"name\": \"Tamil Eelam\",\n            \"countryCode\": \"TEL\",\n            \"parentAreaId\": 2267,\n            \"parentArea\": \"World\"\n        },\n        {\n            \"id\": 2239,\n            \"name\": \"Tanzania\",\n            \"countryCode\": \"TAN\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2240,\n            \"name\": \"Thailand\",\n            \"countryCode\": \"THA\",\n            \"parentAreaId\": 2014,\n            \"parentArea\": \"Asia\"\n        },\n        {\n            \"id\": 2241,\n            \"name\": \"Timor-Leste\",\n            \"countryCode\": \"EAT\",\n            \"parentAreaId\": 2014,\n            \"parentArea\": \"Asia\"\n        },\n        {\n            \"id\": 2242,\n            \"name\": \"Togo\",\n            \"countryCode\": \"TOG\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2243,\n            \"name\": \"Tonga\",\n            \"countryCode\": \"TON\",\n            \"parentAreaId\": 2175,\n            \"parentArea\": \"Oceania\"\n        },\n        {\n            \"id\": 2244,\n            \"name\": \"TR Northern Cyprus\",\n            \"countryCode\": \"NCY\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2245,\n            \"name\": \"Trinidad and Tobago\",\n            \"countryCode\": \"TTO\",\n            \"parentAreaId\": 2159,\n            \"parentArea\": \"N/C America\"\n        },\n        {\n            \"id\": 2246,\n            \"name\": \"Tunisia\",\n            \"countryCode\": \"TUN\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2247,\n            \"name\": \"Turkey\",\n            \"countryCode\": \"TUR\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2248,\n            \"name\": \"Turkmenistan\",\n            \"countryCode\": \"TKM\",\n            \"parentAreaId\": 2014,\n            \"parentArea\": \"Asia\"\n        },\n        {\n            \"id\": 2249,\n            \"name\": \"Turks and Caicos Islands\",\n            \"countryCode\": \"TCA\",\n            \"parentAreaId\": 2159,\n            \"parentArea\": \"N/C America\"\n        },\n        {\n            \"id\": 2250,\n            \"name\": \"Tuvalu\",\n            \"countryCode\": \"TVL\",\n            \"parentAreaId\": 2175,\n            \"parentArea\": \"Oceania\"\n        },\n        {\n            \"id\": 2251,\n            \"name\": \"Two Sicilies\",\n            \"countryCode\": \"TSI\",\n            \"parentAreaId\": 2267,\n            \"parentArea\": \"World\"\n        },\n        {\n            \"id\": 2252,\n            \"name\": \"Uganda\",\n            \"countryCode\": \"UGA\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2253,\n            \"name\": \"Ukraine\",\n            \"countryCode\": \"UKR\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2254,\n            \"name\": \"United Arab Emirates\",\n            \"countryCode\": \"UAE\",\n            \"parentAreaId\": 2014,\n            \"parentArea\": \"Asia\"\n        },\n        {\n            \"id\": 2255,\n            \"name\": \"United Kingdom\",\n            \"countryCode\": \"UK\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2256,\n            \"name\": \"United States\",\n            \"countryCode\": \"USA\",\n            \"parentAreaId\": 2159,\n            \"parentArea\": \"N/C America\"\n        },\n        {\n            \"id\": 2257,\n            \"name\": \"Uruguay\",\n            \"countryCode\": \"URY\",\n            \"parentAreaId\": 2220,\n            \"parentArea\": \"South America\"\n        },\n        {\n            \"id\": 2258,\n            \"name\": \"US Virgin Islands\",\n            \"countryCode\": \"USV\",\n            \"parentAreaId\": 2159,\n            \"parentArea\": \"N/C America\"\n        },\n        {\n            \"id\": 2259,\n            \"name\": \"Uzbekistan\",\n            \"countryCode\": \"UZB\",\n            \"parentAreaId\": 2014,\n            \"parentArea\": \"Asia\"\n        },\n        {\n            \"id\": 2260,\n            \"name\": \"Vanuatu\",\n            \"countryCode\": \"VUT\",\n            \"parentAreaId\": 2175,\n            \"parentArea\": \"Oceania\"\n        },\n        {\n            \"id\": 2261,\n            \"name\": \"Vatican City\",\n            \"countryCode\": \"VAC\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2262,\n            \"name\": \"Venezuela\",\n            \"countryCode\": \"VEN\",\n            \"parentAreaId\": 2220,\n            \"parentArea\": \"South America\"\n        },\n        {\n            \"id\": 2263,\n            \"name\": \"Vietnam\",\n            \"countryCode\": \"VIE\",\n            \"parentAreaId\": 2014,\n            \"parentArea\": \"Asia\"\n        },\n        {\n            \"id\": 2264,\n            \"name\": \"Wales\",\n            \"countryCode\": \"WAL\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2265,\n            \"name\": \"West Indies\",\n            \"countryCode\": \"WIN\",\n            \"parentAreaId\": 2267,\n            \"parentArea\": \"World\"\n        },\n        {\n            \"id\": 2266,\n            \"name\": \"Western Sahara\",\n            \"countryCode\": \"WSR\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2267,\n            \"name\": \"World\",\n            \"countryCode\": \"INT\",\n            \"parentAreaId\": null,\n            \"parentArea\": null\n        },\n        {\n            \"id\": 2268,\n            \"name\": \"Yemen\",\n            \"countryCode\": \"YEM\",\n            \"parentAreaId\": 2014,\n            \"parentArea\": \"Asia\"\n        },\n        {\n            \"id\": 2269,\n            \"name\": \"Yugoslavia\",\n            \"countryCode\": \"YUG\",\n            \"parentAreaId\": 2077,\n            \"parentArea\": \"Europe\"\n        },\n        {\n            \"id\": 2270,\n            \"name\": \"Zambia\",\n            \"countryCode\": \"ZAM\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2271,\n            \"name\": \"Zanzibar\",\n            \"countryCode\": \"ZAN\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        },\n        {\n            \"id\": 2272,\n            \"name\": \"Zimbabwe\",\n            \"countryCode\": \"ZIM\",\n            \"parentAreaId\": 2001,\n            \"parentArea\": \"Africa\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Area Resource",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9d3162d5-c6b6-49c6-a0d4-ee661f50b887",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+							"tests[\"Client is authenticated\"] = postman.getResponseHeader(\"X-Authenticated-Client\") !== 'anonymous';",
+							"tests[\"API-Version header set\"] = postman.getResponseHeader(\"X-API-Version\") === 'v2';",
+							"tests[\"X-Requests-Available > 0\"] = postman.getResponseHeader(\"X-Requests-Available-Minute\") > 0;",
+							"tests[\"X-RequestCounter-Reset > 0\"] = postman.getResponseHeader(\"X-RequestCounter-Reset\") > 0;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://api.football-data.org/v2/areas/2014",
+					"protocol": "https",
+					"host": [
+						"api",
+						"football-data",
+						"org"
+					],
+					"path": [
+						"v2",
+						"areas",
+						"2014"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Competition List Resource",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7d2a66f0-2503-477d-bf6c-f09959f62698",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+							"tests[\"Client is not authenticated\"] = postman.getResponseHeader(\"X-Authenticated-Client\") === 'anonymous';",
+							"tests[\"API-Version header set\"] = postman.getResponseHeader(\"X-API-Version\") === 'v2';",
+							"tests[\"X-Requests-Available > 0\"] = postman.getResponseHeader(\"X-Requests-Available\") > 0;",
+							"tests[\"X-RequestCounter-Reset > 0\"] = postman.getResponseHeader(\"X-RequestCounter-Reset\") > 0;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://api.football-data.org/v2/competitions",
+					"protocol": "https",
+					"host": [
+						"api",
+						"football-data",
+						"org"
+					],
+					"path": [
+						"v2",
+						"competitions"
+					]
+				},
+				"description": "Pull entry point."
+			},
+			"response": []
+		},
+		{
+			"name": "Competition Resource",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "403d13cf-f082-48d5-8213-2c4397e119ea",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+							"tests[\"Client is authenticated\"] = postman.getResponseHeader(\"X-Authenticated-Client\") !== 'anonymous';",
+							"tests[\"API-Version header set\"] = postman.getResponseHeader(\"X-API-Version\") === 'v2';",
+							"tests[\"X-Requests-Available > 0\"] = postman.getResponseHeader(\"X-Requests-Available-Minute\") > 0;",
+							"tests[\"X-RequestCounter-Reset > 0\"] = postman.getResponseHeader(\"X-RequestCounter-Reset\") > 0;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://api.football-data.org/v2/competitions/2000",
+					"protocol": "https",
+					"host": [
+						"api",
+						"football-data",
+						"org"
+					],
+					"path": [
+						"v2",
+						"competitions",
+						"2000"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Competition Resource By Code",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f3fd4c77-781c-4ed4-a070-99ed06dd3b29",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+							"tests[\"Client is authenticated\"] = postman.getResponseHeader(\"X-Authenticated-Client\") !== 'anonymous';",
+							"tests[\"API-Version header set\"] = postman.getResponseHeader(\"X-API-Version\") === 'v2';",
+							"tests[\"X-Requests-Available > 0\"] = postman.getResponseHeader(\"X-Requests-Available-Minute\") > 0;",
+							"tests[\"X-RequestCounter-Reset > 0\"] = postman.getResponseHeader(\"X-RequestCounter-Reset\") > 0;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://api.football-data.org/v2/competitions/2021",
+					"protocol": "http",
+					"host": [
+						"api",
+						"football-data",
+						"org"
+					],
+					"path": [
+						"v2",
+						"competitions",
+						"2021"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Competition / Match SubResource",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c20e3751-967c-4d65-a52c-2dc72dd24d50",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+							"tests[\"Client is authenticated\"] = postman.getResponseHeader(\"X-Authenticated-Client\") !== 'anonymous';",
+							"tests[\"API-Version header set\"] = postman.getResponseHeader(\"X-API-Version\") === 'v2';",
+							"tests[\"X-Requests-Available > 0\"] = postman.getResponseHeader(\"X-Requests-Available-Minute\") > 0;",
+							"tests[\"X-RequestCounter-Reset > 0\"] = postman.getResponseHeader(\"X-RequestCounter-Reset\") > 0;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://api.football-data.org/v2/competitions/2001/matches",
+					"protocol": "https",
+					"host": [
+						"api",
+						"football-data",
+						"org"
+					],
+					"path": [
+						"v2",
+						"competitions",
+						"2001",
+						"matches"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Competition / Team Subresource",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9117e82d-2aa6-4f89-b6b9-c9a745684057",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+							"tests[\"Client is authenticated\"] = postman.getResponseHeader(\"X-Authenticated-Client\") !== 'anonymous';",
+							"tests[\"API-Version header set\"] = postman.getResponseHeader(\"X-API-Version\") === 'v2';",
+							"tests[\"X-Requests-Available > 0\"] = postman.getResponseHeader(\"X-Requests-Available-Minute\") > 0;",
+							"tests[\"X-RequestCounter-Reset > 0\"] = postman.getResponseHeader(\"X-RequestCounter-Reset\") > 0;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://api.football-data.org/v2/competitions/2024/teams",
+					"protocol": "https",
+					"host": [
+						"api",
+						"football-data",
+						"org"
+					],
+					"path": [
+						"v2",
+						"competitions",
+						"2024",
+						"teams"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Competition / Standings",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "09e6c5a9-1910-4e0d-8b2b-8703e54c152a",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+							"tests[\"Client is authenticated\"] = postman.getResponseHeader(\"X-Authenticated-Client\") !== 'anonymous';",
+							"tests[\"API-Version header set\"] = postman.getResponseHeader(\"X-API-Version\") === 'v2';",
+							"tests[\"X-Requests-Available > 0\"] = postman.getResponseHeader(\"X-Requests-Available-Minute\") > 0;",
+							"tests[\"X-RequestCounter-Reset > 0\"] = postman.getResponseHeader(\"X-RequestCounter-Reset\") > 0;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://api.football-data.org/v2/competitions/2021/standings?standingType=HOME",
+					"protocol": "https",
+					"host": [
+						"api",
+						"football-data",
+						"org"
+					],
+					"path": [
+						"v2",
+						"competitions",
+						"2021",
+						"standings"
+					],
+					"query": [
+						{
+							"key": "standingType",
+							"value": "HOME"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Team Resource",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e0c92f77-cd53-4dcd-af78-07941fef7181",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+							"tests[\"Client is authenticated\"] = postman.getResponseHeader(\"X-Authenticated-Client\") !== 'anonymous';",
+							"tests[\"API-Version header set\"] = postman.getResponseHeader(\"X-API-Version\") === 'v2';",
+							"tests[\"X-Requests-Available > 0\"] = postman.getResponseHeader(\"X-Requests-Available-Minute\") > 0;",
+							"tests[\"X-RequestCounter-Reset > 0\"] = postman.getResponseHeader(\"X-RequestCounter-Reset\") > 0;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://api.football-data.org/v2/teams/18",
+					"protocol": "https",
+					"host": [
+						"api",
+						"football-data",
+						"org"
+					],
+					"path": [
+						"v2",
+						"teams",
+						"18"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Team / Match Subresource",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6e5cd66e-4995-43b4-a1a3-daff84a83c99",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+							"tests[\"Client is authenticated\"] = postman.getResponseHeader(\"X-Authenticated-Client\") !== 'anonymous';",
+							"tests[\"API-Version header set\"] = postman.getResponseHeader(\"X-API-Version\") === 'v2';",
+							"tests[\"X-Requests-Available > 0\"] = postman.getResponseHeader(\"X-Requests-Available-Minute\") > 0;",
+							"tests[\"X-RequestCounter-Reset > 0\"] = postman.getResponseHeader(\"X-RequestCounter-Reset\") > 0;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://api.football-data.org/v2/teams/19/matches",
+					"protocol": "http",
+					"host": [
+						"api",
+						"football-data",
+						"org"
+					],
+					"path": [
+						"v2",
+						"teams",
+						"19",
+						"matches"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Match Resource (AUTH)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "44b2755e896a44dbacf6b8f8b7f22989",
+								"disabled": false
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic emFrZG9la2plcjpmdjIyZ2IzMw==",
+								"disabled": false
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://staging-api.football-data.org/v2/matches/200000",
+							"protocol": "http",
+							"host": [
+								"staging-api",
+								"football-data",
+								"org"
+							],
+							"path": [
+								"v2",
+								"matches",
+								"200000"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true",
+							"name": "Access-Control-Allow-Credentials",
+							"description": "Indicates whether or not the response to the request can be exposed when the credentials flag is true. When used as part of a response to a preflight request, this indicates whether or not the actual request can be made using credentials."
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET",
+							"name": "Access-Control-Allow-Methods",
+							"description": "Specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request."
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*",
+							"name": "Access-Control-Allow-Origin",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Language",
+							"value": "en-US",
+							"name": "Content-Language",
+							"description": "The language the content is in"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 14 Jun 2018 14:59:56 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Server",
+							"value": "nginx/1.6.2",
+							"name": "Server",
+							"description": "A name for the server"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked",
+							"name": "Transfer-Encoding",
+							"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+						},
+						{
+							"key": "X-API-Version",
+							"value": "v2",
+							"name": "X-API-Version",
+							"description": "Custom header"
+						},
+						{
+							"key": "X-Application-Context",
+							"value": "application:production",
+							"name": "X-Application-Context",
+							"description": "Custom header"
+						},
+						{
+							"key": "X-Authenticated-Client",
+							"value": "daniel",
+							"name": "X-Authenticated-Client",
+							"description": "Custom header"
+						},
+						{
+							"key": "X-RequestCounter-Reset",
+							"value": "60",
+							"name": "X-RequestCounter-Reset",
+							"description": "Custom header"
+						},
+						{
+							"key": "X-Requests-Available-Minute",
+							"value": "29",
+							"name": "X-Requests-Available-Minute",
+							"description": "Custom header"
+						}
+					],
+					"cookie": [],
+					"body": "{\"id\":200000,\"competition\":{\"id\":2000,\"name\":\"FIFA World Cup\"},\"utcDate\":\"2018-06-14T15:00Z\",\"lastUpdated\":\"2018-06-14T16:05Z\",\"status\":\"SCHEDULED\",\"matchday\":1,\"stage\":\"GROUP_STAGE\",\"referees\":[{\"id\":49485,\"name\":\"Néstor Pitana\",\"nationality\":null},{\"id\":49486,\"name\":\"Juan Pablo Belatti\",\"nationality\":null},{\"id\":49487,\"name\":\"Hernán Maidana\",\"nationality\":null},{\"id\":49488,\"name\":\"Sandro Ricci\",\"nationality\":null},{\"id\":49526,\"name\":\"Emerson de Carvalho\",\"nationality\":null},{\"id\":11054,\"name\":\"Massimiliano Irrati\",\"nationality\":null},{\"id\":49527,\"name\":\"Mauro Vigliano\",\"nationality\":null},{\"id\":49528,\"name\":\"Carlos Astroza\",\"nationality\":null},{\"id\":11116,\"name\":\"Daniele Orsato\",\"nationality\":null}],\"minute\":null,\"homeTeam\":{\"id\":808,\"name\":\"Russia\",\"coach\":{\"id\":null,\"name\":null,\"countryOfBirth\":null,\"nationality\":null},\"captain\":{\"id\":null,\"name\":null,\"shirtNumber\":null},\"lineup\":[],\"bench\":[]},\"awayTeam\":{\"id\":801,\"name\":\"Saudi Arabia\",\"coach\":{\"id\":43782,\"name\":\"Pizzi\",\"countryOfBirth\":\"Argentina\",\"nationality\":\"Spain\"},\"captain\":{\"id\":null,\"name\":null,\"shirtNumber\":null},\"lineup\":[{\"id\":3576,\"name\":\"Salman Al Faraj\",\"position\":\"Midfielder\",\"shirtNumber\":7},{\"id\":3567,\"name\":\"Yasir Al Shahrani\",\"position\":\"Defender\",\"shirtNumber\":13},{\"id\":3574,\"name\":\"Salem Al Dawsari\",\"position\":\"Midfielder\",\"shirtNumber\":18},{\"id\":3579,\"name\":\"Abdullah Otayf\",\"position\":\"Midfielder\",\"shirtNumber\":14},{\"id\":3570,\"name\":\"Mohammed Al Burayk\",\"position\":\"Defender\",\"shirtNumber\":6},{\"id\":3560,\"name\":\"Abdullah Al Muaiouf\",\"position\":\"Goalkeeper\",\"shirtNumber\":1},{\"id\":3566,\"name\":\"Osama Hawsawi\",\"position\":\"Defender\",\"shirtNumber\":3},{\"id\":3575,\"name\":\"Taiseer Al Jassim\",\"position\":\"Midfielder\",\"shirtNumber\":17},{\"id\":3584,\"name\":\"Mohammed Al Sahlawi\",\"position\":\"Attacker\",\"shirtNumber\":10},{\"id\":3565,\"name\":\"Omar Hawsawi\",\"position\":\"Defender\",\"shirtNumber\":5},{\"id\":43781,\"name\":\"Yahia Al Shehri\",\"position\":\"Midfielder\",\"shirtNumber\":8}],\"bench\":[{\"id\":3564,\"name\":\"Motaz Hawsawi\",\"position\":\"Defender\",\"shirtNumber\":23},{\"id\":3572,\"name\":\"Abdulmalek Al Khaibri\",\"position\":\"Midfielder\",\"shirtNumber\":11},{\"id\":3585,\"name\":\"Muhannad Asiri\",\"position\":\"Attacker\",\"shirtNumber\":20},{\"id\":3578,\"name\":\"Hussain Al Moqahwi\",\"position\":\"Midfielder\",\"shirtNumber\":16},{\"id\":3582,\"name\":\"Hattan Babhir\",\"position\":\"Midfielder\",\"shirtNumber\":9},{\"id\":32956,\"name\":\"Fahad Al Muwallad\",\"position\":\"Attacker\",\"shirtNumber\":19},{\"id\":3561,\"name\":\"Mohammed Al Owais\",\"position\":\"Goalkeeper\",\"shirtNumber\":22},{\"id\":3563,\"name\":\"Mansour Al Harbi\",\"position\":\"Defender\",\"shirtNumber\":2},{\"id\":3562,\"name\":\"Yasser Al Mosailem\",\"position\":\"Goalkeeper\",\"shirtNumber\":21},{\"id\":3571,\"name\":\"Ali Al Bulayhi\",\"position\":\"Defender\",\"shirtNumber\":4},{\"id\":3580,\"name\":\"Mohamed Kanno\",\"position\":\"Midfielder\",\"shirtNumber\":12},{\"id\":3583,\"name\":\"Abdullah Al Khaibari\",\"position\":\"Midfielder\",\"shirtNumber\":15}]},\"score\":{\"winner\":null,\"duration\":\"REGULAR\",\"halfTime\":{\"homeTeam\":null,\"awayTeam\":null},\"fullTime\":{\"homeTeam\":null,\"awayTeam\":null},\"extraTime\":{\"homeTeam\":null,\"awayTeam\":null},\"penalties\":{\"homeTeam\":null,\"awayTeam\":null}},\"goals\":[],\"bookings\":[],\"substitutions\":[]}"
+				}
+			]
+		},
+		{
+			"name": "Match List Resource",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "474a68f4-ff57-4742-af5c-e099fdc04934",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+							"tests[\"Client is authenticated\"] = postman.getResponseHeader(\"X-Authenticated-Client\") === 'daniel';",
+							"tests[\"API-Version header set\"] = postman.getResponseHeader(\"X-API-Version\") === 'v2';",
+							"tests[\"X-Requests-Available > 0\"] = postman.getResponseHeader(\"X-Requests-Available-Minute\") > 0;",
+							"tests[\"X-RequestCounter-Reset > 0\"] = postman.getResponseHeader(\"X-RequestCounter-Reset\") > 0;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://api.football-data.org/v2/matches",
+					"protocol": "http",
+					"host": [
+						"api",
+						"football-data",
+						"org"
+					],
+					"path": [
+						"v2",
+						"matches"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Match Resource",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "977f16c4-330b-41c4-bb3d-3987a26c70e3",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+							"tests[\"Client is authenticated\"] = postman.getResponseHeader(\"X-Authenticated-Client\") !== 'anonymous';",
+							"tests[\"API-Version header set\"] = postman.getResponseHeader(\"X-API-Version\") === 'v2';",
+							"tests[\"X-Requests-Available > 0\"] = postman.getResponseHeader(\"X-Requests-Available-Minute\") > 0;",
+							"tests[\"X-RequestCounter-Reset > 0\"] = postman.getResponseHeader(\"X-RequestCounter-Reset\") > 0;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://api.football-data.org/v2/matches/233445",
+					"protocol": "https",
+					"host": [
+						"api",
+						"football-data",
+						"org"
+					],
+					"path": [
+						"v2",
+						"matches",
+						"233445"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Competition / Team Subresource",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "689aba57-d16b-4473-a4cb-8694c697b1a6",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+							"tests[\"Client is authenticated\"] = postman.getResponseHeader(\"X-Authenticated-Client\") !== 'anonymous';",
+							"tests[\"API-Version header set\"] = postman.getResponseHeader(\"X-API-Version\") === 'v2';",
+							"tests[\"X-Requests-Available > 0\"] = postman.getResponseHeader(\"X-Requests-Available-Minute\") > 0;",
+							"tests[\"X-RequestCounter-Reset > 0\"] = postman.getResponseHeader(\"X-RequestCounter-Reset\") > 0;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://api.football-data.org/v2/competitions/2001/teams",
+					"protocol": "https",
+					"host": [
+						"api",
+						"football-data",
+						"org"
+					],
+					"path": [
+						"v2",
+						"competitions",
+						"2001",
+						"teams"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Player Resource",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "18be23bd-c5d5-404a-9829-d83e28c9190d",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+							"tests[\"Client is authenticated\"] = postman.getResponseHeader(\"X-Authenticated-Client\") !== 'anonymous';",
+							"tests[\"API-Version header set\"] = postman.getResponseHeader(\"X-API-Version\") === 'v2';",
+							"tests[\"X-Requests-Available > 0\"] = postman.getResponseHeader(\"X-Requests-Available-Minute\") > 0;",
+							"tests[\"X-RequestCounter-Reset > 0\"] = postman.getResponseHeader(\"X-RequestCounter-Reset\") > 0;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://api.football-data.org/v2/players/44",
+					"protocol": "https",
+					"host": [
+						"api",
+						"football-data",
+						"org"
+					],
+					"path": [
+						"v2",
+						"players",
+						"44"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Player / Matches Subesource",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "27b7d4d0-5d90-4383-aa9c-42c857c46398",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+							"tests[\"Client is authenticated\"] = postman.getResponseHeader(\"X-Authenticated-Client\") !== 'anonymous';",
+							"tests[\"API-Version header set\"] = postman.getResponseHeader(\"X-API-Version\") === 'v2';",
+							"tests[\"X-Requests-Available > 0\"] = postman.getResponseHeader(\"X-Requests-Available-Minute\") > 0;",
+							"tests[\"X-RequestCounter-Reset > 0\"] = postman.getResponseHeader(\"X-RequestCounter-Reset\") > 0;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://api.football-data.org/v2/players/47/matches?status=FINISHED",
+					"protocol": "https",
+					"host": [
+						"api",
+						"football-data",
+						"org"
+					],
+					"path": [
+						"v2",
+						"players",
+						"47",
+						"matches"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "FINISHED"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "bc97d4cd-0f5c-4fc1-a153-3fad21c7221f",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "f21faf97-a2df-4752-807c-1893a116dc14",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

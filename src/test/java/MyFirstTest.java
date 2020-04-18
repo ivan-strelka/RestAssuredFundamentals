@@ -8,9 +8,11 @@ public class MyFirstTest extends TestConfig {
 
     @Test
     public void firstTest() {
-        given().header("accept", "application/json").
-                when().get("videogames/1").
-                then().statusCode(200);
+        given()
+                .log()
+                .all()
+                .when().get("videogames/1")
+                .then().log().all().statusCode(200);
 
     }
 

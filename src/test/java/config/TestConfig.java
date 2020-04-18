@@ -37,7 +37,6 @@ public class TestConfig {
         videoGames_responseSpec = new ResponseSpecBuilder()
                 .expectStatusCode(200)
                 .expectHeader("Content-Type", "application/json")
-                .expectHeader("Content-Length", "119")
                 .build();
 
         RestAssured.responseSpecification = videoGames_responseSpec;

@@ -12,7 +12,7 @@ public class MyFirstTest extends TestConfig {
                 .log()
                 .all()
                 .when().get("videogames/1")
-                .then().log().all().statusCode(200);
+                .then().log().all();
 
     }
 

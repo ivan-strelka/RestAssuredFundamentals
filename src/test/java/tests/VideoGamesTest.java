@@ -1,6 +1,7 @@
+package tests;
 
-import config.EndPointsVideoGamesAPI;
-import config.TestConfig;
+import endpoints.EndPointsVideoGamesAPI;
+import config.VideoGameConfig;
 import io.restassured.response.Response;
 import model.VideoGame;
 import org.junit.Test;
@@ -8,9 +9,9 @@ import org.junit.Test;
 
 import static io.restassured.RestAssured.*;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
-import static org.hamcrest.Matchers.lessThan;
 
-public class VideoGamesTest extends TestConfig {
+
+public class VideoGamesTest extends VideoGameConfig {
 
     @Test
     public void getGamesByIdTest() {

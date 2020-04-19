@@ -1,4 +1,4 @@
-package config;
+package endpoints;
 
 public final class EndPointsFootballAPI {
     public static final String GET_COMPETITION_MATCHES = "competitions/2003/matches";

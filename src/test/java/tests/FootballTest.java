@@ -1,10 +1,9 @@
+package tests;
 
-import config.EndPointsFootballAPI;
-import config.TestConfig;
-import io.restassured.RestAssured;
+import endpoints.EndPointsFootballAPI;
+import config.FootballApiConfig;
 import io.restassured.http.Headers;
 import io.restassured.response.Response;
-import io.restassured.response.ValidatableResponse;
 import org.junit.Test;
 
 import java.util.List;
@@ -13,7 +12,7 @@ import java.util.Map;
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.equalTo;
 
-public class FootballTest extends TestConfig {
+public class FootballTest extends FootballApiConfig {
 
     @Test
     public void getCompetitionsByMatchesDay() {
